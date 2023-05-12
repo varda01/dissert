@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,7 +45,7 @@ public class Activity4 extends AppCompatActivity {
     private FirebaseUser currentUser;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private CollectionReference collectionReference = db.collection("people");
+    private CollectionReference collectionReference = db.collection("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +90,9 @@ public class Activity4 extends AppCompatActivity {
                         && !TextUtils.isEmpty(editText2.getText().toString())
                         && !TextUtils.isEmpty(editText3.getText().toString())){
 
-                    String email = editText.getText().toString().trim();
+                    String email = editText2.getText().toString().trim();
                     String password = editText3.getText().toString().trim();
-                    String username = editText2.getText().toString().trim();
-
+                    String username = editText.getText().toString().trim();
                     CreateEmailAccount(email,password,username);
                 }else{
                     Toast.makeText(Activity4.this, "Empty Fields", Toast.LENGTH_SHORT).show();
@@ -103,7 +103,8 @@ public class Activity4 extends AppCompatActivity {
 
     }
 
-    private void CreateEmailAccount(String email, String password, final String username) {
+    private void CreateEmailAccount(final String email, final String password, final String username) {
+
         if (!TextUtils.isEmpty(email)
                 && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(username)){
 
@@ -111,52 +112,62 @@ public class Activity4 extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Log.e("varda05", task.getResult().toString());
+                            }
                             if (task.isSuccessful()) {
+                                Log.e("varda05", "working");
                                 // we take user to Next Activity: (AddJournalActivity)
                                 currentUser = firebaseAuth.getCurrentUser();
-                                assert currentUser != null;
-                                String currentUserId = currentUser.getUid();
-
-                                // Create a userMap so we can create a user in the User Collection in Firestore
-                                Map<String, String> userObj = new HashMap<>();
-                                userObj.put("userId", currentUserId);
-                                userObj.put("username", username);
 
 
-                                //Adding Users to Firestore
-                                collectionReference.add(userObj)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                documentReference.get()
-                                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                            @Override
-                                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                                if (Objects.requireNonNull(task.getResult()).exists()) {
-                                                                    String name = task.getResult().getString("username");
+                                if (currentUser != null) {
+                                    String currentUserId = currentUser.getUid();
 
-                                                                    Intent i = new Intent(Activity4.this,
-                                                                            MainActivity.class);
 
-                                                                    i.putExtra("username", name);
-                                                                    i.putExtra("userId", currentUserId);
-                                                                    startActivity(i);
-                                                                } else {
+                                    // Create a userMap so we can create a user in the User Collection in Firestore
+                                    Map<String, String> userObj = new HashMap<>();
+                                    userObj.put("userId", currentUserId);
+                                    userObj.put("email", email.toString().trim());
+                                    userObj.put("username", username.toString().trim());
+                                    userObj.put("password", password.toString().trim());
+;
 
+                                    //Adding Users to Firestore
+                                    collectionReference.add(userObj)
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                @Override
+                                                public void onSuccess(DocumentReference documentReference) {
+                                                    documentReference.get()
+                                                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                    if (Objects.requireNonNull(task.getResult()).exists()) {
+                                                                        String name = task.getResult().getString("username");
+
+                                                                        Toast.makeText(Activity4.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+
+                                                                        Intent i = new Intent(Activity4.this, MainActivity.class);
+
+                                                                        i.putExtra("username", name);
+                                                                        i.putExtra("userId", currentUserId);
+                                                                        startActivity(i);
+                                                                    } else {
+
+                                                                    }
                                                                 }
-                                                            }
-                                                        }).addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                // Display Failed Message
-                                                                Toast.makeText(Activity4.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        });
-                                            }
-                                        });
-
-
-                            }
+                                                            }).addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    // Display Failed Message
+                                                                    Log.e("varda05", e.toString());
+                                                                    Toast.makeText(Activity4.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            });
+                                                }
+                                            });
+                                }
+                             }
                         }
                     });
         }
