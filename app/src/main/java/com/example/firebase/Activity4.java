@@ -113,10 +113,10 @@ public class Activity4 extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
-                                Log.e("varda05", task.getResult().toString());
+                              //  Log.e("varda05", task.getResult().toString());
                             }
                             if (task.isSuccessful()) {
-                                Log.e("varda05", "working");
+                               // Log.e("varda05", "working");
                                 // we take user to Next Activity: (AddJournalActivity)
                                 currentUser = firebaseAuth.getCurrentUser();
 
@@ -160,7 +160,7 @@ public class Activity4 extends AppCompatActivity {
                                                                 @Override
                                                                 public void onFailure(@NonNull Exception e) {
                                                                     // Display Failed Message
-                                                                    Log.e("varda05", e.toString());
+                                                                   // Log.e("varda05", e.toString());
                                                                     Toast.makeText(Activity4.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             });

@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void LoginEmailPasswordUser(String email, String pwd) {
         // Checking for empty texts
-        email = email.toString().trim();
-        pwd = pwd.toString().trim();
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pwd)) {
 
             firebaseAuth.signInWithEmailAndPassword(email, pwd)
@@ -97,26 +95,54 @@ public class MainActivity extends AppCompatActivity {
                                 final String currentUserId = user.getUid();
 
                                 collectionReference.
-                                        whereEqualTo("userId", currentUserId)
-                                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                        whereEqualTo("email", email)
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                       // Log.d("varda05", document.getId() + " => " + document.getData());
+                                                        if(pwd.equals(document.get("password"))){
+                                                            Toast.makeText(MainActivity.this, "Successfully logged", Toast.LENGTH_LONG).show();
+                                                           // startActivity(new Intent(MainActivity.this, Activity3.class));
+                                                        }else {
+                                                            Toast.makeText(MainActivity.this, "Invalid password", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                                } else {
+                                                    Log.d("varda05", "Error getting documents: ", task.getException());
+                                                }
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                // If Failed:
+                                                Log.e("varda05", e.toString());
+                                                Toast.makeText(MainActivity.this,
+                                                        "Something went wrong " + e, Toast.LENGTH_LONG).show();
+                                            }
+                                        });
+
+                                        /*.addSnapshotListener(new EventListener<QuerySnapshot>() {
                                             @Override
                                             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                               // Log.e("varda05", error.getMessage().toString());
 
-                                                if (error != null) {
-
-
-                                                    assert value != null;
+                                                if (error == null && value != null) {
+                                                    Log.e("varda05", "working");
                                                     if (!value.isEmpty()) {
                                                         // Getting all QueryDocSnapShots
-                                                        for (QueryDocumentSnapshot snapshot : value) {
-                                                            //Log.e("varda05", "StartingAct")
+                                                        /*for (QueryDocumentSnapshot snapshot : value) {
+                                                            Log.e("varda05", "StartingAct");
 
                                                             startActivity(new Intent(MainActivity.this, Activity3.class));
                                                         }
                                                     }
                                                 }
                                             }
-                                        });
+                                        });*/
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -125,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                             // If Failed:
                             Log.e("varda05", e.toString());
                             Toast.makeText(MainActivity.this,
-                                    "Something went wront " + e, Toast.LENGTH_LONG).show();
+                                    "Something went wrong " + e, Toast.LENGTH_LONG).show();
                         }
                     });
         } else {
