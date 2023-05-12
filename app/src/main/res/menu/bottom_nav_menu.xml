@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mapF"
+        android:title="Maps"
+        android:icon="@drawable/maps"/>
+    <item
+        android:id="@+id/formF"
+        android:title="Form"
+        android:icon="@drawable/form"/>
+    <item
+        android:id="@+id/logout"
+        android:title="Log Out"
+        android:icon="@drawable/logout"/>
+</menu>
