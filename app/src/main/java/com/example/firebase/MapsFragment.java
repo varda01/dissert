@@ -28,7 +28,7 @@ public class MapsFragment extends Fragment {
             mMap.addMarker(new MarkerOptions()
                     .position(m1)
                     .title("Marker in L`escalier")
-                    .snippet("My In-laws lives there")
+                    .snippet("owner")
             );
             mMap.moveCamera(CameraUpdateFactory.newLatLng(m1));
         }

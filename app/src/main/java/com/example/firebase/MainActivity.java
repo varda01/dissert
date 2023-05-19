@@ -105,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
                                                        // Log.d("varda05", document.getId() + " => " + document.getData());
                                                         if(pwd.equals(document.get("password"))){
                                                             Toast.makeText(MainActivity.this, "Successfully logged", Toast.LENGTH_LONG).show();
+                                                            Intent dash = new Intent(getApplicationContext(), Activity3.class);
+                                                            startActivity(dash);
                                                            // startActivity(new Intent(MainActivity.this, Activity3.class));
                                                         }else {
                                                             Toast.makeText(MainActivity.this, "Invalid password", Toast.LENGTH_LONG).show();
