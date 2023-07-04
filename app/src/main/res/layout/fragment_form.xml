@@ -1,14 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:background="@drawable/wave"
     tools:context=".form">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/btn11"
+            android:layout_width="176dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="124dp"
+            android:backgroundTint="#068377"
+            android:text="SUBMIT"
+            android:textColor="#F4F0F0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.846"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtView"
+            android:layout_width="104dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="40dp"
+            android:text="Month:"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/eTxt"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtView4" />
+
+        <TextView
+            android:id="@+id/txtView4"
+            android:layout_width="259dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="Production Form"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtView5"
+            android:layout_width="96dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="24dp"
+            android:text="Year :"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/eTxtNum"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtView" />
+
+        <EditText
+            android:id="@+id/eTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:hint="Ex: January"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.942"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtView4" />
+
+        <EditText
+            android:id="@+id/eTxtNum"
+            android:layout_width="237dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="Ex: 2020"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.965"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eTxt" />
+
+        <RadioButton
+            android:id="@+id/radBtn"
+            android:layout_width="235dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="52dp"
+            android:text="Production(t)"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/radBtn2"
+            app:layout_constraintHorizontal_bias="0.028"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtView5" />
+
+        <RadioButton
+            android:id="@+id/radBtn2"
+            android:layout_width="203dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="36dp"
+            android:text="Area Harvested(Ha)"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eTxtNum" />
+
+        <RadioButton
+            android:id="@+id/radBtn3"
+            android:layout_width="217dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="84dp"
+            android:text="New Plantation(Ha)"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eTxtNum" />
+
+        <RadioButton
+            android:id="@+id/radBtn6"
+            android:layout_width="145dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="26dp"
+            android:text="North"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/radBtn7"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radBtn3" />
+
+        <RadioButton
+            android:id="@+id/radBtn7"
+            android:layout_width="145dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="36dp"
+            android:text="South"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radBtn3" />
+
+        <RadioButton
+            android:id="@+id/radBtn8"
+            android:layout_width="145dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="20dp"
+            android:text="East"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/radBtn9"
+            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radBtn6" />
+
+        <RadioButton
+            android:id="@+id/radBtn9"
+            android:layout_width="145dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="West"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.864"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radBtn7" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="341dp"
+            android:layout_height="172dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="76dp"
+            android:src="@drawable/veg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radBtn9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

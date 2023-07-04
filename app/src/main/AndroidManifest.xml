@@ -40,7 +40,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".form"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.Main" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activity4"
             android:exported="false"

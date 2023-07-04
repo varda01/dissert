@@ -117,7 +117,7 @@ public class Activity4 extends AppCompatActivity {
                             }
                             if (task.isSuccessful()) {
                                // Log.e("varda05", "working");
-                                // we take user to Next Activity: (AddJournalActivity)
+                                // we take user to Next Activity
                                 currentUser = firebaseAuth.getCurrentUser();
 
 
