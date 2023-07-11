@@ -1,5 +1,6 @@
 package com.example.firebase;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,9 +36,9 @@ public class form extends Fragment {
     Button btn1;
     EditText eText;
     EditText eNumText;
-    RadioButton rad1;
-    RadioButton rad2;
-    RadioButton rad3;
+    EditText eProduction;
+    EditText eAreaHa;
+    EditText eNewPlantation;
     RadioButton rad4;
     RadioButton rad5;
     RadioButton rad6;
@@ -69,8 +68,10 @@ public class form extends Fragment {
         }
     }
 
-    String radio;
     String radiobut;
+    String production;
+    String areaHar;
+    String newPlants;
     String month;
     String year;
     @Override
@@ -79,9 +80,9 @@ public class form extends Fragment {
         View view = inflater.inflate(R.layout.fragment_form, container, false);
         eText = view.findViewById(R.id.eTxt);
         eNumText = view.findViewById(R.id.eTxtNum);
-        rad1 = view.findViewById(R.id.radBtn);
-        rad2 = view.findViewById(R.id.radBtn2);
-        rad3 = view.findViewById(R.id.radBtn3);
+        eProduction = view.findViewById(R.id.production2);
+        eAreaHa = view.findViewById(R.id.areaHa);
+        eNewPlantation = view.findViewById(R.id.edit);
         rad4 = view.findViewById(R.id.radBtn6);
         rad5 = view.findViewById(R.id.radBtn7);
         rad6 = view.findViewById(R.id.radBtn8);
@@ -95,9 +96,14 @@ public class form extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(eText.getText().toString())
-                        && !TextUtils.isEmpty(eNumText.getText().toString())) {
+                        && !TextUtils.isEmpty(eNumText.getText().toString()) && !TextUtils.isEmpty(eProduction.getText().toString())
+                        && !TextUtils.isEmpty(eAreaHa.getText().toString()) && !TextUtils.isEmpty(eNewPlantation.getText().toString())) {
                     month = eText.getText().toString().trim();
                     year = eNumText.getText().toString().trim();
+                    production = eProduction.getText().toString().trim();
+                    areaHar = eAreaHa.getText().toString().trim();
+                    newPlants = eNewPlantation.getText().toString().trim();
+
                     if (rad4.isChecked()){
                             radiobut = rad4.getText().toString();
                     }
@@ -111,17 +117,8 @@ public class form extends Fragment {
                     else {
                         radiobut = rad7.getText().toString();
                     }
-                    if (rad1.isChecked()){
-                        radio = rad1.getText().toString();
-                    }
-                    else if (rad2.isChecked()){
-                        radio = rad2.getText().toString();
-                    }
-                    else {
-                        radio = rad3.getText().toString();
-                    }
 
-                    saveData(month, year,radiobut,radio);
+                    saveData(month,year,radiobut,production,areaHar,newPlants);
                 } else {
                     Toast.makeText(getActivity(), "Empty fields", Toast.LENGTH_SHORT).show();
                 }
@@ -131,14 +128,16 @@ public class form extends Fragment {
         });
         return view;
     }
-    private void saveData(String month, String year, String radiobut, String radio) {
+    private void saveData(String month, String year, String radiobut, String production, String areaHar, String newPlants) {
         DocumentReference docRef = db.collection("ProductionInfo").document();
 
         Map<String, Object> data = new HashMap<>();
         data.put("Year", year);
         data.put("Month", month);
         data.put("Region", radiobut);
-        data.put("Parameter", radio);
+        data.put("Production", production);
+        data.put("Area Harvested", areaHar);
+        data.put("New Plantation", newPlants);
 
         docRef.set(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

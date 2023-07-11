@@ -11,6 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
+        <EditText
+            android:id="@+id/production2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Ex: 28 T"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eTxtNum" />
+
         <Button
             android:id="@+id/btn11"
             android:layout_width="176dp"
@@ -74,14 +89,14 @@
             android:id="@+id/eTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="28dp"
             android:ems="10"
             android:hint="Ex: January"
             android:inputType="text"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.942"
+            app:layout_constraintHorizontal_bias="0.908"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtView4" />
 
@@ -101,52 +116,11 @@
             app:layout_constraintTop_toBottomOf="@+id/eTxt" />
 
         <RadioButton
-            android:id="@+id/radBtn"
-            android:layout_width="235dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="52dp"
-            android:text="Production(t)"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/radBtn2"
-            app:layout_constraintHorizontal_bias="0.028"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtView5" />
-
-        <RadioButton
-            android:id="@+id/radBtn2"
-            android:layout_width="203dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="36dp"
-            android:text="Area Harvested(Ha)"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eTxtNum" />
-
-        <RadioButton
-            android:id="@+id/radBtn3"
-            android:layout_width="217dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="84dp"
-            android:text="New Plantation(Ha)"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eTxtNum" />
-
-        <RadioButton
             android:id="@+id/radBtn6"
             android:layout_width="145dp"
             android:layout_height="48dp"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="22dp"
             android:text="North"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -154,20 +128,21 @@
             app:layout_constraintEnd_toStartOf="@+id/radBtn7"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radBtn3" />
+            app:layout_constraintTop_toBottomOf="@+id/textV5" />
 
         <RadioButton
             android:id="@+id/radBtn7"
             android:layout_width="145dp"
             android:layout_height="48dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="36dp"
+            android:layout_marginTop="10dp"
             android:text="South"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radBtn3" />
+            app:layout_constraintHorizontal_bias="0.838"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit" />
 
         <RadioButton
             android:id="@+id/radBtn8"
@@ -209,6 +184,81 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radBtn9" />
+
+        <TextView
+            android:id="@+id/textV3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="20dp"
+            android:text="Production:"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/production2"
+            app:layout_constraintHorizontal_bias="0.727"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtView5" />
+
+        <TextView
+            android:id="@+id/textV4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:text="Area Harvested:"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/areaHa"
+            app:layout_constraintHorizontal_bias="0.133"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textV3" />
+
+        <TextView
+            android:id="@+id/textV5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
+            android:text="New Plantation:"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/edit"
+            app:layout_constraintHorizontal_bias="0.21"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textV4" />
+
+        <EditText
+            android:id="@+id/areaHa"
+            android:layout_width="198dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Ex: 30 ha"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/production2" />
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="211dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:hint="Ex: 15 ha"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.965"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/areaHa" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

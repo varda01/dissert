@@ -40,7 +40,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="4dp"
         android:ems="10"
-        android:hint="UserName"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:maxLength="25"
         android:textColor="#7A7777"

@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                                        // Log.d("varda05", document.getId() + " => " + document.getData());
                                                         if(pwd.equals(document.get("password"))){
-                                                            Toast.makeText(MainActivity.this, "Successfully logged", Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(MainActivity.this, "Successfully logged in", Toast.LENGTH_LONG).show();
                                                             Intent dash = new Intent(getApplicationContext(), Activity3.class);
                                                             startActivity(dash);
                                                            // startActivity(new Intent(MainActivity.this, Activity3.class));
