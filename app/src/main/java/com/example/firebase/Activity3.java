@@ -42,29 +42,4 @@ public class Activity3 extends AppCompatActivity implements NavigationBarView.On
         return false;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu2,menu);
-        return true;
-    }
-
-    /*public void whenPostJson_thenCorrect() throws IOException {
-        JsonObject json = new JsonObject();
-        json.addProperty("params", []);
-
-        RequestBody body = RequestBody.create(
-                MediaType.parse("application/json"), json);
-
-        Request request = new Request.Builder()
-                .url("http://127.0.0.1:8080/predict")
-                .post(body)
-                .build();
-
-        Call call = client.newCall(request);
-        Response response = call.execute();
-        String predicted_result=response.
-
-        assertThat(response.code(), equalTo(200));
-    }*/
 }
